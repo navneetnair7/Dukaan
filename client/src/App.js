@@ -1,17 +1,17 @@
-import './App.css';
-import {Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Seller_Login from './Pages/Seller_Login'
 import Seller_Signup from './Pages/Seller_Signup'
 import User_Login from './Pages/User_Login'
 import User_Signup from './Pages/User_Signup'
 import Navbar from './Components/Navbar'
+import Home from './Pages/Home'
 
 function App() {
   return (
-    <div className='App'>
+    <div className='bg-white'>
       <Navbar />
       <Routes>
-        <Route path = '/' element = <Home /> exact />
+        <Route path = "/" element = <Home /> />
         <Route path='/userlogin' element = <User_Login /> exact />
         <Route path='/usersignup' element = <User_Signup /> exact />
         <Route path='/sellerlogin' element = <Seller_Login /> exact />
