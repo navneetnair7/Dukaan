@@ -5,7 +5,9 @@ import Popular from '../Components/Popular'
 import Recommendations from '../Components/Recommendations'
 import Offers from '../Components/Offers'
 import Bestsellers from '../Components/Bestsellers'
-import Staples from '../Components/Staples'
+// import Staples from '../Components/Staples'
+import BoughtTogether from '../Components/BoughtTogether'
+import Users from '../Components/Users'
 
 const Home = () => {
   return (
@@ -18,7 +20,9 @@ const Home = () => {
       <Offers />
       <Categories />
       <Bestsellers />
-      <Staples />
+      {/* <Staples /> */}
+      <Users />
+      <BoughtTogether />
     </div>
   )
 }

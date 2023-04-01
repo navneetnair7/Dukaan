@@ -31,8 +31,8 @@ const items = [{
     img: biscuits,
     color: "#FEFF86"
 }, {
-    name: "Cold drinks",
-    img: drinks,
+    name: "Bath Items",
+    img: bath,
     color: "#F7DB6A"
 }, {
     name: "Biscuits",

@@ -1,7 +1,7 @@
 import React from 'react'
 import items from './CategoryItems'
 
-const Category_item = () => {
+const CategoryItem = () => {
   return (
     items.map((item) => {
         return (
@@ -16,4 +16,4 @@ const Category_item = () => {
   )
 }
 
-export default Category_item
+export default CategoryItem
