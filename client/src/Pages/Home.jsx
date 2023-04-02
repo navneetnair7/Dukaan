@@ -8,6 +8,7 @@ import Bestsellers from '../Components/Bestsellers'
 // import Staples from '../Components/Staples'
 import BoughtTogether from '../Components/BoughtTogether'
 import Users from '../Components/Users'
+import Footer from '../Components/Footer'
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       {/* <Staples /> */}
       <Users />
       <BoughtTogether />
+      <Footer />
     </div>
   )
 }

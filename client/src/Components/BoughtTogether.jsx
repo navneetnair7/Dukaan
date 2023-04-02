@@ -1,9 +1,10 @@
 import React from 'react'
+import bath from '../images/bath.png'
 
 const BoughtTogether = () => {
   return (
     <div>
-        test
+      Test
     </div>
   )
 }

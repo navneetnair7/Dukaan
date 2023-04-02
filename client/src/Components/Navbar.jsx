@@ -10,7 +10,7 @@ const Navbar = () => {
         <input className='p-1 ml-2 border border-slate-400 w-3/5 my-4 hover:border-slate-800 rounded-lg pl-2' placeholder='Search'/>
       </div>
       <div className='flex mr-5'>
-        <div className='flex w-20 items-center justify-center mr-2 hover:duration-300 hover:bg-white'>
+        <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
           <a href='#'>Orders</a>
         </div>
         <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
