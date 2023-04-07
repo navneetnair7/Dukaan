@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import Seller_Login from './Pages/Seller_Login'
-import Seller_Signup from './Pages/Seller_Signup'
-import User_Login from './Pages/User_Login'
-import User_Signup from './Pages/User_Signup'
+import SellerLogin from './Pages/SellerLogin'
+import SellerSignup from './Pages/SellerSignup'
+import UserLogin from './Pages/UserLogin'
+import UserSignup from './Pages/UserSignup'
 import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
+import SingleProductDetails from './Pages/SingleProductDetails'
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path = "/" element = <Home /> />
-        <Route path='/userlogin' element = <User_Login /> exact />
-        <Route path='/usersignup' element = <User_Signup /> exact />
-        <Route path='/sellerlogin' element = <Seller_Login /> exact />
-        <Route path='/sellersignup' element = <Seller_Signup /> exact />
+        <Route path='/userlogin' element = <UserLogin /> exact />
+        <Route path='/product' element = <SingleProductDetails /> exact />
+        <Route path='/usersignup' element = <UserSignup /> exact />
+        <Route path='/sellerlogin' element = <SellerLogin /> exact />
+        <Route path='/sellersignup' element = <SellerSignup /> exact />
       </Routes>
     </div>
   );

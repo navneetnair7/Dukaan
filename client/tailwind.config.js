@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'navy': '#38628C'
+        'navy': '#38628C',
+        // 'moss': '#8C8C80C'
       }
     },
   },

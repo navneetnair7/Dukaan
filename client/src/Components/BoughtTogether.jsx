@@ -3,9 +3,7 @@ import bath from '../images/bath.png'
 
 const BoughtTogether = () => {
   return (
-    <div>
-      Test
-    </div>
+    <div>Test</div>
   )
 }
 

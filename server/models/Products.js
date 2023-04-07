@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(
-    "miniprojectt",
+    "project",
     "root",
     "Apples123mysql",
     {
@@ -10,35 +10,32 @@ const sequelize = new Sequelize(
     }
 )
 
-const user = sequelize.define(
-    "User",
+const product = sequelize.define(
+    "Product",
     {
-        Aadhar_No: {
+        P_ID: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         Name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Contact_No: {
+        Price: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        Age: {
-            type: DataTypes.INTEGER,
+        Description: {
+            type: DataTypes.STRING,
             allowNull: false
         },
-        City: {
+        Category: {
             type: DataTypes.STRING,
             allowNull: false
         }
-    },
-    {
-        timestamps: false,
-        freezeTableName: true
     }
 )
 
-module.exports = user;
+module.exports = product;
