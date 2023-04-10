@@ -15,20 +15,28 @@ const getById = async (req, res) => {
     let getUser;
     // console.log(req.body.aadhar);
     try {
-        getUser = user.findAll({
+        user.findAll({
             where: {
                 Aadhar_No: req.body.aadhar,
                 Name: req.body.name
+            }
+        }).then(function(custInfo){
+            if(custInfo != 0){
+                return res.status(200).json({ custInfo, message: "found" })
+                // res.send(custInfo.rows)
+            }
+            else {
+                return res.status(200).json({})
             }
         })
     }
     catch(err) {
         console.log(err);
     }
-    if(!getUser) {
-        return res.status(404).json({ message : "No products found" })
-    }
-    return res.status(200).json({ getUser })
+    // if(getUser.length == 0) {
+    //     return res.status(404).json({ message : "No users found" })
+    // }
+    // return res.status(200).json({ getUser })
 }
 
 const addUser = async (req, res) => {

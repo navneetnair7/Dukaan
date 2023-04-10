@@ -14,7 +14,7 @@ const Navbar = () => {
           <a href='#'>Orders</a>
         </div>
         <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
-          <a href='#'>Login</a>
+          <a href='/userlogin'>Login</a>
         </div>
       </div>
     </div>

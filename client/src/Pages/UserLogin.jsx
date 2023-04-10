@@ -24,8 +24,21 @@ const UserLogin = () => {
       aadhar: user.aadhar,
       name: user.name
     })
-    .then(res => res.data)
+    .then(res => {
+      console.log(res.data);
+      if(res.data.message){
+        navigate('/')
+      }
+    })
     // .then(navigate('/'))
+  }
+
+  const backToHome = () => {
+    navigate('/')
+  }
+
+  const goToSignup = () => {
+    navigate('/usersignup')
   }
 
   return (
@@ -45,6 +58,9 @@ const UserLogin = () => {
           name='name'
         />
         <button type='submit' onClick={checkLogin}>Login</button>
+        <p className='text-center'>OR</p>
+        <button onClick={goToSignup}>Sign Up</button>
+        <button onClick={backToHome}>Back to Home</button>
       </form>
     </div>
   )

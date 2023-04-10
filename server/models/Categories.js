@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(
-    "project",
+    "miniprojectt",
     "root",
     "Apples123mysql",
     {
