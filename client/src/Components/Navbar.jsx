@@ -7,11 +7,11 @@ const Navbar = () => {
         <div className='flex w-20 items-center justify-center'>
           <a href='/'>Logo</a>
         </div>
-        <input className='p-1 ml-2 border border-slate-400 w-3/5 my-4 hover:border-slate-800 rounded-lg pl-2' placeholder='Search'/>
+        {/* <input className='p-1 ml-2 border border-slate-400 w-3/5 my-4 hover:border-slate-800 rounded-lg pl-2' placeholder='Search'/> */}
       </div>
       <div className='flex mr-5'>
         <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
-          <a href='#'>Orders</a>
+          <a href='/cart/Navneet'>My Cart</a>
         </div>
         <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
           <a href='/userlogin'>Login</a>

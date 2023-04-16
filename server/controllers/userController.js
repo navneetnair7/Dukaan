@@ -16,9 +16,10 @@ const getById = async (req, res) => {
     // console.log(req.body.aadhar);
     try {
         user.findAll({
+            attributes: [ 'Name', 'Password'],
             where: {
-                Aadhar_No: req.body.aadhar,
-                Name: req.body.name
+                Name: req.body.name,
+                Password: req.body.password
             }
         }).then(function(custInfo){
             if(custInfo != 0){

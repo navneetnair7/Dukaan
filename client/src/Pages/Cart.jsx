@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-
+    
+    const navigate = useNavigate();
     const initialCart = [{
         ItemName: "",
         Quantity: 0,
@@ -23,6 +25,11 @@ const Cart = () => {
             })
     }
 
+    const placeOrder = async () => {
+        await axios.delete(`http://localhost:4000/cart/Navneet`)
+            .then(navigate('/OrderSuccessful'))
+    }
+
     const getItemArray = (data) => 
         data.map((row) => ({
             ItemName: row.ItemName,
@@ -33,18 +40,6 @@ const Cart = () => {
     useEffect(() => {
         getCartData()
     }, [])
-
-    const CartItem = () => {
-        products.map((product) => {
-            return(
-                <div className='w-20 mx-auto flex justify-between'>
-                    <p className='mx-auto'>{product.ItemName}</p>
-                    <p className='mx-auto'>{product.Quantity}</p>
-                    <p className='mx-auto'>{product.Price}</p>
-                </div>
-            )
-        })
-    }
 
     return (
         <div className='h-screen bg-white'>
@@ -77,6 +72,11 @@ const Cart = () => {
                         )
                     })
                 }
+                </div>
+            </div>
+            <div className='w-1/2 ml-20'>
+                <div className='w-52 h-10 mx-auto border border-gray-500 rounded-xl text-center align-middle bg-green-200 hover:bg-green-600'>
+                    <button className='w-full h-full' onClick={placeOrder}>Place Order</button>
                 </div>
             </div>
         </div>

@@ -1,14 +1,14 @@
-// import { useState } from 'react'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Spline from '@splinetool/react-spline'
 
 const UserLogin = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    aadhar: "",
     name: "",
+    password: ""
   })
 
   let name, value
@@ -21,8 +21,8 @@ const UserLogin = () => {
   const checkLogin = async (e) => {
     e.preventDefault();
     await axios.post('http://localhost:4000/user/login', {
-      aadhar: user.aadhar,
-      name: user.name
+      name: user.name,
+      password: user.password
     })
     .then(res => {
       console.log(res.data);
@@ -42,26 +42,44 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='w-1/2 mx-auto'>
-      <form className='flex flex-col'>
-        <input 
-          placeholder='Aadhar Number'
-          onChange={getUserData}
-          name='aadhar'
-          value={user.aadhar}
-          type='number'
-        />
-        <input 
-          placeholder='Name'
-          value={user.name}
-          onChange={getUserData}
-          name='name'
-        />
-        <button type='submit' onClick={checkLogin}>Login</button>
-        <p className='text-center'>OR</p>
-        <button onClick={goToSignup}>Sign Up</button>
-        <button onClick={backToHome}>Back to Home</button>
-      </form>
+    <div className='w-full h-screen overflow-y-hidden overflow-x-hidden flex bg-yellow-100'>
+      <div className='w-full translate-x-10'>
+        <Spline scene='https://prod.spline.design/aiowdFvEJi7hIOX6/scene.splinecode' />
+      </div>
+      <div className='mx-auto my-auto w-full'>
+        <div className='flex justify-center items-center'> 
+            <div className='bg-white w-1/2 h-96 rounded-lg'>
+                <div className='flex justify-center items-center flex-col'>
+                    <div>
+                        <img alt = "logo" />
+                        <h2 className='text-center pt-12 text-xl'>Sign in to your account</h2>
+                    </div>
+                    <div className='pt-8 px-24'>
+                        <form>
+                            <label>Username</label>
+                            <input 
+                                name = "name"
+                                className='w-full border border-zinc-500 py-1 rounded-md'
+                                onChange={getUserData}
+                            />
+                            <label>Password</label>
+                            <input 
+                                name = "password"
+                                className='w-full border border-zinc-500 py-1 rounded-md'
+                                onChange={getUserData}
+                                type='password'
+                            />
+                            <div className='flex flex-col pt-2'>
+                              <button className='bg-blue-400' onClick={checkLogin}>Sign In</button>
+                              <button className='bg-blue-400 mt-2' onClick={goToSignup}>Sign Up</button>
+                              <button className='bg-blue-400 mt-2' onClick={backToHome}>Back To Home</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
   )
 }

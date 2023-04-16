@@ -13,12 +13,11 @@ const sequelize = new Sequelize(
 const user = sequelize.define(
     "User",
     {
-        Aadhar_No: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true
-        },
         Name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        Password: {
             type: DataTypes.STRING,
             allowNull: false
         },

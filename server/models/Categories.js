@@ -19,7 +19,14 @@ const category = sequelize.define(
         },
         NumberOfItems: {
             type: DataTypes.INTEGER
+        },
+        Image: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
+    }, {
+        freezeTableName: true,
+        timestamps: false
     }
 )
 

@@ -7,14 +7,20 @@ const Bestsellers = () => {
             Best Sellers
         </p>
         <div className='flex h-96 pt-10'>
-            <div className='w-1/3 mx-5 border rounded-lg border-black'>
-                <p className='mt-10 text-5xl'>1</p>
+            <div className='w-1/3 mx-5 border rounded-lg border-black '>
+                {/* <p className='mt-10 text-5xl'>1</p> */}
+                <img src='/images/milk.jpg' className='h-4/5 m-auto' />
+                <p className='text-2xl'>Amul Milk</p>
             </div>
             <div className='w-1/3 mx-5 border rounded-lg border-black'>
-                <p className='mt-10 text-5xl'>2</p>
+                {/* <p className='mt-10 text-5xl'>2</p> */}
+                <img src='/images/aashirwad.jpg' className='h-4/5 m-auto' />
+                <p className='text-2xl'>Aashirwad Aata</p>
             </div>
             <div className='w-1/3 mx-5 border rounded-lg border-black'>
-                <p className='mt-10 text-5xl'>3</p>
+                {/* <p className='mt-10 text-5xl'>3</p> */}
+                <img src='/images/onions.jpeg' className='h-4/5 m-auto' />
+                <p className='text-2xl'>Onions</p>
             </div>
         </div>
     </div>

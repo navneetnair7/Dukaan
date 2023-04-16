@@ -4,6 +4,9 @@ const { Sequelize } = require('sequelize');
 const cors = require('cors');
 const userRouter = require('./routes/userRoutes')
 const cartRouter = require('./routes/cartRoutes');
+const homeRouter = require('./routes/homeRoutes')
+const categoryRouter = require('./routes/categoryRoutes');
+const productRouter = require('./routes/productRoutes');
 
 //express
 const app = express();
@@ -30,6 +33,8 @@ try {
 //Routes 
 app.use('/user', userRouter)
 app.use('/cart', cartRouter)
-
+app.use('/', homeRouter)
+app.use('/category', categoryRouter )
+app.use('/product', productRouter)
 
 app.listen(4000)
