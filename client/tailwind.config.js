@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         'navy': '#38628C',
         // 'moss': '#8C8C80C'
+        'ouryellow': '#F5BA13'
       }
     },
   },

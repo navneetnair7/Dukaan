@@ -8,6 +8,7 @@ import Home from './Pages/Home'
 import SingleProductDetails from './Pages/SingleProductDetails'
 import Cart from './Pages/Cart'
 import ProductGridView from './Pages/ProductGridView'
+import Maps from './Components/Maps'
 // import Footer from './Components/Footer'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/sellersignup' element = <SellerSignup /> exact />
         <Route path='/cart/:name' element = <Cart /> exact/>
         <Route path='/category/:name' element=<ProductGridView /> exact />
+        <Route path='/maps/:name' element=<Maps /> exact />
       </Routes>
       {/* <Footer /> */}
     </div>

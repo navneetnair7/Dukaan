@@ -1,4 +1,7 @@
 const { Sequelize } = require('sequelize')
+const bcrypt = require('bcrypt')
+
+const saltrounds = 10;
 
 const user = require('../models/User')
 const sequelize = new Sequelize(
@@ -12,17 +15,16 @@ const sequelize = new Sequelize(
 )
 
 const getById = async (req, res) => {
-    let getUser;
     // console.log(req.body.aadhar);
     try {
         user.findAll({
-            attributes: [ 'Name', 'Password'],
+            attributes: [ 'Email', 'Password'],
             where: {
-                Name: req.body.name,
-                Password: req.body.password
+                Email: req.body.email,
             }
         }).then(function(custInfo){
-            if(custInfo != 0){
+            if(custInfo != 0 && bcrypt.compareSync(req.body.password, custInfo[0].dataValues.Password)){
+                // console.log(custInfo[0].dataValues.Password);
                 return res.status(200).json({ custInfo, message: "found" })
                 // res.send(custInfo.rows)
             }
@@ -41,16 +43,18 @@ const getById = async (req, res) => {
 }
 
 const addUser = async (req, res) => {
+    const salt = bcrypt.genSaltSync(saltrounds);
+    const hash = bcrypt.hashSync(req.body.password, salt)
     await sequelize.sync()
     let newUser;
     try {
         newUser = user.create({
-            Aadhar_No: req.body.aadhar,
             Name: req.body.name,
+            Email: req.body.email,
+            Password: hash,
             Contact_No: req.body.contact,
-            Age: req.body.age,
             City: req.body.city
-        })
+        }, { fields: ['Name', 'Email', 'Password', 'Contact_No', 'City']})
         // await newUser.save();
     }
     catch(err) {

@@ -6,10 +6,10 @@ const UserSignup = () => {
   const navigate = useNavigate()
 
   const [user, setUser] = useState({
-    aadhar: "",
     name: "",
+    email: "",
+    password: "",
     contact: "",
-    age: "",
     city: ""
   })
 
@@ -22,49 +22,80 @@ const UserSignup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:4000/user', {
-      aadhar: user.aadhar,
+    await axios.post('http://localhost:4000/user/', {
       name: user.name,
+      email: user.email,
+      password: user.password,
       contact: user.contact,
-      age: user.age,
       city: user.city
-    }).then(navigate('/'))
+    }).then(navigate(`/maps/${user.name}`))
   }
 
   return (
-    <div className='mx-auto w-1/2'>
-      <form className='flex flex-col'>
-        <input 
-          placeholder='Aadhar Number' 
-          onChange={getUserData} 
-          name='aadhar' 
-          value={user.aadhar} 
-        />
-        <input 
-          placeholder='Name' 
-          onChange={getUserData} 
-          name='name' 
-          value={user.name} 
-        />
-        <input 
-          placeholder='Contact Number' 
-          onChange={getUserData} 
-          name='contact' 
-          value={user.contact}
-        />
-        <input 
-          placeholder='Age' 
-          onChange={getUserData} 
-          name='age' 
-          value={user.age}
-        />
-        <input 
-          placeholder='City' 
-          onChange={getUserData} 
-          name='city' 
-          value={user.city}
-        />
-        <button type='submit' onClick={handleSubmit}>Sign Up</button>
+    <div className="flex flex-col justify-center items-center h-screen">
+      <h1 className="text-3xl font-bold mb-8">Signup</h1>
+      <form className="w-full max-w-md">
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={user.name}
+            onChange={(e) => getUserData(e)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email ID</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={user.email}
+            onChange={(e) => getUserData(e)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={user.password}
+            onChange={(e) => getUserData(e)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="contactNo" className="block text-gray-700 font-bold mb-2">Contact No</label>
+          <input
+            type="tel"
+            id="contactNo"
+            name="contact"
+            value={user.contact}
+            onChange={(e) => getUserData(e)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="city" className="block text-gray-700 font-bold mb-2">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={user.city}
+            onChange={(e) => getUserData(e)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            required
+          />
+        </div>
+        <button onClick={handleSubmit} className='h-10 w-1/2 mx-auto rounded-lg border border-ouryellow'>Sign In</button>
       </form>
     </div>
   )

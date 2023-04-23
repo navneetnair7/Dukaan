@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Spline from '@splinetool/react-spline'
+import '../styles/login.css'
 
 const UserLogin = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    name: "",
+    email: "",
     password: ""
   })
 
@@ -21,13 +22,13 @@ const UserLogin = () => {
   const checkLogin = async (e) => {
     e.preventDefault();
     await axios.post('http://localhost:4000/user/login', {
-      name: user.name,
+      email: user.email,
       password: user.password
     })
     .then(res => {
       console.log(res.data);
       if(res.data.message){
-        navigate('/')
+        navigate('/maps/')
       }
     })
     // .then(navigate('/'))
@@ -42,42 +43,38 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='w-full h-screen overflow-y-hidden overflow-x-hidden flex bg-yellow-100'>
-      <div className='w-full translate-x-10'>
-        <Spline scene='https://prod.spline.design/aiowdFvEJi7hIOX6/scene.splinecode' />
+    <div className='container w-full mt-10'>
+      <div className='tag w-auto ml-5'>
+        <div className='title'>
+          <span className='du'>DU</span>KAAN
+        </div>
+        <div className='tagline'>
+          "Shop Local <span className='tg'>with Us!</span>"
+        </div>
       </div>
-      <div className='mx-auto my-auto w-full'>
-        <div className='flex justify-center items-center'> 
-            <div className='bg-white w-1/2 h-96 rounded-lg'>
-                <div className='flex justify-center items-center flex-col'>
-                    <div>
-                        <img alt = "logo" />
-                        <h2 className='text-center pt-12 text-xl'>Sign in to your account</h2>
-                    </div>
-                    <div className='pt-8 px-24'>
-                        <form>
-                            <label>Username</label>
-                            <input 
-                                name = "name"
-                                className='w-full border border-zinc-500 py-1 rounded-md'
-                                onChange={getUserData}
-                            />
-                            <label>Password</label>
-                            <input 
-                                name = "password"
-                                className='w-full border border-zinc-500 py-1 rounded-md'
-                                onChange={getUserData}
-                                type='password'
-                            />
-                            <div className='flex flex-col pt-2'>
-                              <button className='bg-blue-400' onClick={checkLogin}>Sign In</button>
-                              <button className='bg-blue-400 mt-2' onClick={goToSignup}>Sign Up</button>
-                              <button className='bg-blue-400 mt-2' onClick={backToHome}>Back To Home</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+
+      <div className='spline w-1/2'>
+        <div className='element'>
+          <Spline scene='https://prod.spline.design/Ani2FGjlF8QJiSwI/scene.splinecode' />
+        </div>
+      </div>
+
+      <div className='form w-1/4'>
+        <div className='Login'>
+          <div className='inp'>
+            <h1>Login</h1>
+            {/* <div id='username'>Username</div>
+            <input type='text' placeholder='Name' className='p-2'></input> */}
+            <div>E-mail</div>
+            <input type='email' className='h-10 p-2' placeholder="E-mail" id='email' name='email' value={user.email} onChange={getUserData}></input>
+            <div>
+            <div>Password</div>
+            <input type='password' className='p-2 h-10' placeholder='Password' name='password' value={user.password} required onChange={getUserData}></input>
+              <button className='login rounded-xl hover:bg-yellow-700' onClick={checkLogin}>LOGIN</button>
+              <button className='login rounded-xl hover:bg-yellow-700' onClick={goToSignup}>Sign Up</button>
+              <button className='login rounded-xl hover:bg-yellow-700' onClick={backToHome}>Back To Home</button>
             </div>
+          </div>
         </div>
       </div>
     </div>

@@ -30,7 +30,7 @@ const ProductDetails =() => {
         )
     }
 
-    const AddtoCart = async (e, item) => {
+    const AddtoCart = async (e) => {
         if (e.target.tagName === 'BUTTON'){
             // console.log(product);
             await axios.post('http://localhost:4000/cart/add', {

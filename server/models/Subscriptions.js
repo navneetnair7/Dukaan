@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes, Model } = require('sequelize');
 
 const sequelize = new Sequelize(
     "miniprojectt",
@@ -10,26 +10,18 @@ const sequelize = new Sequelize(
     }
 )
 
-const user = sequelize.define(
-    "User",
+const subscription = sequelize.define(
+    "Subscriptions", 
     {
-        Name: {
+        Customer: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Email: {
+        StoreName: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        Contact_No: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        City: {
+        Address: {
             type: DataTypes.STRING,
             allowNull: false
         }
@@ -40,4 +32,4 @@ const user = sequelize.define(
     }
 )
 
-module.exports = user;
+module.exports = subscription;
