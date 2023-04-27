@@ -3,9 +3,13 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import CartShops from '../Components/CartShops'
 import Spline from '@splinetool/react-spline'
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button, Group } from '@mantine/core';
 
 
 const Cart = () => {
+
+    const [opened, { open, close }] = useDisclosure(false);
     
     const navigate = useNavigate();
     const initialCart = [{
@@ -57,7 +61,7 @@ const Cart = () => {
             <CartShops />
             <div className='flex flex-col h-full'>
                 <div className='w-1/2 min-h-min bg-white rounded-xl m-20 flex flex-col text-center pt-10 border-t-2'>
-                    <div className='flex'>
+                    {/* <div className='flex'>
                         <div className='w-1/4 mx-auto'>
                             Items:
                         </div>
@@ -68,8 +72,8 @@ const Cart = () => {
                             Price:
                         </div>
                     </div>
-                    <br />
-                    <div>{
+                    <br /> */}
+                    {/* <div>{
                         products.map((product) => {
                             return(
                                 <div className='flex justify-between mb-10'>
@@ -84,7 +88,7 @@ const Cart = () => {
                             )
                         })
                     }
-                    </div>
+                    </div> */}
                 </div>
                 <div className= 'bg-white w-1/3 h-1/5 m-20 rounded-xl'>
                     <p className='h-1/2'>Total - </p>

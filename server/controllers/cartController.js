@@ -1,5 +1,9 @@
 const { Sequelize } = require('sequelize')
 const cart = require('../models/Cart')
+const shopcart = require('../models/ShopCarts')
+const subscription = require('../models/Subscriptions')
+const { QueryTypes } = require('sequelize');
+
 const sequelize = new Sequelize(
     "miniprojectt",
     "root",
@@ -14,12 +18,28 @@ const addItem = async (req, res) => {
     await sequelize.sync();
     // console.log(req.body.name);
     try {
-        newItem = cart.create({
+        newItem = await cart.create({
             Customer: req.body.customer,
             ItemName: req.body.name,
             Price: req.body.price,
             Quantity: req.body.quantity
         }, {fields: ['Customer', 'ItemName', 'Price', 'Quantity']})
+        
+        const [results, metadata] = await sequelize.query("INSERT INTO shopcarts (cartid, shopsid) SELECT cart.id, subscriptions.sub_id FROM subscriptions JOIN cart ON cart.Customer = subscriptions.Customer");
+
+        // let cartid = cart.findAll({
+        //     attributes: ['id'],
+        //     where: {
+        //         Customer: req.bod.customer
+        //     }
+        // })
+        // let shopid = subscription.findAll({
+        //     attributes: ['id'],
+        //     where: {
+        //         Customer: req.body.customer
+        //     }
+        // })
+
     }
     catch(err) {
         console.log(err);
@@ -30,6 +50,18 @@ const addItem = async (req, res) => {
     else{
         return res.status(201).json({ newItem })
     }
+}
+
+const getShopQueue = async (req, res) => {
+    const id = req.params.id
+    try{
+        const queue = await sequelize.query(`SELECT ItemName, Price, Quantity FROM Cart WHERE id IN (SELECT CartId FROM ShopCarts WHERE ShopsId = ${id})`, { type: QueryTypes.SELECT })
+        res.send(queue)
+    }
+    catch(err){
+        console.log(err);
+    }
+    //console.log(queue);
 }
 
 const getItems = async (req, res) => {
@@ -74,3 +106,4 @@ const placeOrder = async (req, res) => {
 exports.addItem = addItem;
 exports.getItems = getItems;
 exports.placeOrder = placeOrder;
+exports.getShopQueue = getShopQueue;

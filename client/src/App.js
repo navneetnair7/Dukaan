@@ -9,12 +9,13 @@ import SingleProductDetails from './Pages/SingleProductDetails'
 import Cart from './Pages/Cart'
 import ProductGridView from './Pages/ProductGridView'
 import Maps from './Components/Maps'
+import Seller from './Pages/Seller'
 // import Footer from './Components/Footer'
 
 function App() {
   return (
     <div className='bg-white'>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element = <Home /> exact/>
         <Route path='/userlogin' element = <UserLogin /> exact />
@@ -25,6 +26,7 @@ function App() {
         <Route path='/cart/:name' element = <Cart /> exact/>
         <Route path='/category/:name' element=<ProductGridView /> exact />
         <Route path='/maps/:name' element=<Maps /> exact />
+        <Route path='/seller/:shopid' element=<Seller /> exact />
       </Routes>
       {/* <Footer /> */}
     </div>
