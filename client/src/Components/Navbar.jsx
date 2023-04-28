@@ -2,21 +2,25 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className='flex w-full h-20 justify-between bg-yellow-300'>
-      <div className='flex ml-5 w-1/2'>
-        <div className='flex w-20 items-center justify-center'>
-          <a href='/'>Logo</a>
+    <div className='Top'>
+      <div className='nav'>
+          <div className='logo'>
+            <span style={{ color: 'white' }}>DU</span>KAAN
+          </div>
+          <div className='search'>
+          <img className='search-icon' src="/images/search.png"></img>
+          <input className='search-bar pl-5' placeholder='Search'></input>
+          </div>
+          
+          <button className='cart'>
+            <img src='/images/cart.png'></img>
+            Cart
+          </button>
+          <button className='profile'>
+            <img src='/images/profile.png'></img>
+            Profile
+          </button>
         </div>
-        {/* <input className='p-1 ml-2 border border-slate-400 w-3/5 my-4 hover:border-slate-800 rounded-lg pl-2' placeholder='Search'/> */}
-      </div>
-      <div className='flex mr-5'>
-        <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
-          <a href='/cart/Navneet'>My Cart</a>
-        </div>
-        <div className='flex w-20 items-center justify-center mr-2 hover:bg-white hover:duration-300'>
-          <a href='/userlogin'>Login</a>
-        </div>
-      </div>
     </div>
   )
 }

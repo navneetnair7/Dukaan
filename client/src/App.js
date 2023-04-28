@@ -3,13 +3,14 @@ import SellerLogin from './Pages/SellerLogin'
 import SellerSignup from './Pages/SellerSignup'
 import UserLogin from './Pages/UserLogin'
 import UserSignup from './Pages/UserSignup'
-import Navbar from './Components/Navbar'
+// import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
 import SingleProductDetails from './Pages/SingleProductDetails'
 import Cart from './Pages/Cart'
 import ProductGridView from './Pages/ProductGridView'
 import Maps from './Components/Maps'
 import Seller from './Pages/Seller'
+import UserProfile from './Pages/UserProfile'
 // import Footer from './Components/Footer'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/category/:name' element=<ProductGridView /> exact />
         <Route path='/maps/:name' element=<Maps /> exact />
         <Route path='/seller/:shopid' element=<Seller /> exact />
+        <Route path='/user/:name' element=<UserProfile /> exact />
       </Routes>
       {/* <Footer /> */}
     </div>
