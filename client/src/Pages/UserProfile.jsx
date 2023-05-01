@@ -1,12 +1,15 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import UserDetailsTab from '../Components/UserDetailsTab'
-// import UserNavbar from '../Components/UserNavbar'
 
 export const UserProfile = () => {
+
+  const { name } = useParams()
+
   return (
-    <div className=' flex flex-wrap justify-center space-x-32 '>
-        <div className='w-11/12'>
-            <UserDetailsTab />
+    <div className=''>
+        <div className='h-[650px] bg-gradient-to-b from-ouryellow '>
+          <UserDetailsTab name={name} />
         </div>
     </div>
   )

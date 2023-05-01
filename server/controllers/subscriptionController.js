@@ -49,5 +49,16 @@ const shopData = async (req, res) => {
     }
 }
 
+const getData = async (req, res) => {
+    try{
+        const details = await sequelize.query(`SELECT * FROM Subscriptions WHERE sub_id = ${req.params.id}`)
+        res.send(details);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 exports.subscribe = subscribe;
 exports.shopData = shopData;
+exports.getData = getData;

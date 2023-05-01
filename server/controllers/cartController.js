@@ -55,7 +55,7 @@ const addItem = async (req, res) => {
 const getShopQueue = async (req, res) => {
     const id = req.params.id
     try{
-        const queue = await sequelize.query(`SELECT ItemName, Price, Quantity FROM Cart WHERE id IN (SELECT CartId FROM ShopCarts WHERE ShopsId = ${id})`, { type: QueryTypes.SELECT })
+        const queue = await sequelize.query(`SELECT Customer, ItemName, Price, Quantity FROM Cart WHERE id IN (SELECT CartId FROM ShopCarts WHERE ShopsId = ${id})`, { type: QueryTypes.SELECT })
         res.send(queue)
     }
     catch(err){

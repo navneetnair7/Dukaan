@@ -4,5 +4,6 @@ const subscriptionController = require('../controllers/subscriptionController')
 
 subscriptionRouter.post('/:name', subscriptionController.subscribe)
 subscriptionRouter.get('/cart/:name', subscriptionController.shopData)
+subscriptionRouter.get('/seller/:id', subscriptionController.getData)
 
 module.exports = subscriptionRouter

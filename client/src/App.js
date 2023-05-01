@@ -9,8 +9,8 @@ import SingleProductDetails from './Pages/SingleProductDetails'
 import Cart from './Pages/Cart'
 import ProductGridView from './Pages/ProductGridView'
 import Maps from './Components/Maps'
-import Seller from './Pages/Seller'
 import UserProfile from './Pages/UserProfile'
+import { SellerProfilePage } from './Pages/SellerProfilePage'
 // import Footer from './Components/Footer'
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path='/cart/:name' element = <Cart /> exact/>
         <Route path='/category/:name' element=<ProductGridView /> exact />
         <Route path='/maps/:name' element=<Maps /> exact />
-        <Route path='/seller/:shopid' element=<Seller /> exact />
+        <Route path='/seller/:id' element=<SellerProfilePage /> exact />
         <Route path='/user/:name' element=<UserProfile /> exact />
       </Routes>
       {/* <Footer /> */}

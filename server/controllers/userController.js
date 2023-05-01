@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+const { Sequelize, QueryTypes } = require('sequelize')
 const bcrypt = require('bcrypt')
 
 const saltrounds = 10;
@@ -115,7 +115,18 @@ const deleteUser = async(req, res) => {
     }
 }
 
+const getDetails = async (req, res) => {
+    try {
+        const details = await sequelize.query(`SELECT * FROM User WHERE Name = "${req.params.name}"`, { type: QueryTypes.SELECT })
+        res.send(details)
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 exports.getById = getById;
 exports.addUser = addUser;
 exports.updateUser = updateUser;
 exports.deleteUser = deleteUser;
+exports.getDetails = getDetails;
