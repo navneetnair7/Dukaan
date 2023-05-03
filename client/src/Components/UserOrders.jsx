@@ -1,6 +1,4 @@
 import React from 'react'
-// import UserOrderDetails from './UserOrderDetails'
-// import milk from '../images/milk.jpg'
 
 export const UserOrders = () => {
   return (

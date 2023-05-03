@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export const SellerOrderDelivery = () => {
   return (
     <div className='ml-12'>

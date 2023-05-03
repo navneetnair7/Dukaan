@@ -7,6 +7,10 @@ body  {
   scrollbar-width: none;  /* Firefox */
 }
 
+::selection {
+  background: rgba(158, 131, 13, 0.795);
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

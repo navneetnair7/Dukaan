@@ -1,7 +1,7 @@
 import React from 'react'
 import GridItem from './GridItem'
 import { GridViewHeader } from './GridViewHeader'
-import { GridCategoryList } from './GridCategoryList'
+import  GridCategoryList  from './GridCategoryList'
 
 export const GridView = () => {
   return (

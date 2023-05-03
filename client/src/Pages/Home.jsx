@@ -1,15 +1,33 @@
 import React from 'react'
 import Catcard from "../Components/Catcard";
-import list from "../Components/list";
 import Spline from '@splinetool/react-spline';
 import Carousel from "../Components/Carousel"
 import '../styles/index.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 
 function Home () {
+  const initialCategory = [{
+    Name: "",
+    NumberOfItems: 0,
+    Image: ""
+  }]
+  const [ categories, setCategories ] = useState(initialCategory)
+
+  const getCategories = () => {
+    axios.get('http://localhost:4000/categories')
+      .then(res => {
+        setCategories(res.data);
+      })
+  }
+
+  useEffect((e) => {
+    // e.preventDefault()
+    getCategories()
+  }, [])
+
   return (
-   
     <div className='Landing'>
-  
       <div className='Top'>
         <div className='nav'>
           <div className='logo'>
@@ -19,7 +37,6 @@ function Home () {
           <img className='search-icon' src="/images/search.png"></img>
           <input className='search-bar pl-5' placeholder='Search'></input>
           </div>
-          
           <button className='cart'>
             <img src='/images/cart.png'></img>
             Cart
@@ -51,7 +68,6 @@ function Home () {
                <div id="disc"> because we Care</div> 
             </div>
             <div className="d-spline">  <Spline scene="https://prod.spline.design/KqT0GG1ZNuZBCGEs/scene.splinecode" /></div>
-           
           </div>
           <button className='explore'>EXPLORE</button>
         </div>
@@ -71,11 +87,10 @@ function Home () {
         <div className='buffer'></div>
         <div className='categories'>
           {
-            list.map(x=>
-              <Catcard name={x.name}/>)
+            categories.map(x=>
+              <Catcard name={x.Name}/>)
           }
         </div>
-
           <div className='carousel-holder mb-8'>
               <h1 className='text-4xl'>Breakfast & Dairy</h1>
                 <Carousel/>

@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
 const getCategories = async (req, res) => {
     let categories;
     try{
-        category.findAll()
+        category.findAll({attributes: ['Name']})
             .then(result => {
                 res.send(result)
                 // console.log(result);

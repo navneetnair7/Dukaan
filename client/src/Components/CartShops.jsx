@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Spline from '@splinetool/react-spline'
 import Invoice from './Invoice';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, Group, useMantineTheme, Notification, Alert } from '@mantine/core';
+import { Modal, useMantineTheme } from '@mantine/core';
 
 const CartShops = () => {
     const [opened, { open, close }] = useDisclosure(false);

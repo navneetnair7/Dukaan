@@ -1,6 +1,5 @@
 import React from 'react'
-import Footer from '../Components/Footer'
-import DeliveryFive from '../Components/DeliveryFive'
+// import Footer from '../Components/Footer'
 // import ProductImage from '../Components/ProductImage'
 import ProductDetails from '../Components/ProductDetails'
 // import ImageCarousel from '../Components/ImageCarousel'
@@ -8,7 +7,6 @@ import ProductDetails from '../Components/ProductDetails'
 const SingleProductDetails = () => {
     return(
         <div className='flex flex-col'>
-            <DeliveryFive />
 
             {/* flex container*/}
             <div className='flex h-9'>

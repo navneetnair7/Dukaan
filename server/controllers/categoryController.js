@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize')
 
 const product = require('../models/Products')
+const category = require('../models/Categories')
 const sequelize = new Sequelize(
     "miniprojectt",
     "root",
@@ -28,4 +29,18 @@ const getProducts = async(req, res) => {
     }
 }
 
+const getAllCategories = async(req, res) => {
+    try {
+        category.findAll({
+            attributes: ['Name']
+        }).then(result => {
+            res.send(result)
+        })
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 exports.getProducts = getProducts;
+exports.getAllCategories = getAllCategories;

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import CartShops from '../Components/CartShops'
 import Spline from '@splinetool/react-spline'
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button, Group } from '@mantine/core';
+// import { Modal, Button, Group } from '@mantine/core';
 
 
 const Cart = () => {
