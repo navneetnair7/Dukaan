@@ -2,7 +2,7 @@ const carlist=[
     {
         name:"Amul Butter",
         quantity:"500g",
-        price:"₹100"
+        price:100
     
     },
     {

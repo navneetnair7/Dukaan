@@ -5,8 +5,11 @@ import Carousel from "../Components/Carousel"
 import '../styles/index.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import Footer from '../Components/Footer'
+import { useNavigate } from 'react-router-dom';
 
 function Home () {
+  const navigate = useNavigate()
   const initialCategory = [{
     Name: "",
     NumberOfItems: 0,
@@ -38,12 +41,13 @@ function Home () {
           <input className='search-bar pl-5' placeholder='Search'></input>
           </div>
           <button className='cart'>
-            <img src='/images/cart.png'></img>
+            <img src='/images/cart.jpeg'></img>
             Cart
           </button>
-          <button className='profile'>
+          <button className='profile' onClick={(e) => {e.preventDefault()
+          navigate('/usersignup')}}>
             <img src='/images/profile.png'></img>
-            Profile
+              Login
           </button>
         </div>
         <div className='inner-div'>
@@ -103,6 +107,11 @@ function Home () {
               <h1 className='text-4xl'>Breakfast & Dairy</h1>
                 <Carousel/>
           </div>
+          <div className='carousel-holder'>
+              <h1 className='text-4xl'>Breakfast & Dairy</h1>
+                <Carousel/>
+          </div>
+          <Footer />
       </div>
     </div>
     

@@ -59,6 +59,23 @@ const getData = async (req, res) => {
     }
 }
 
+const getShops = async (req ,res) => {
+    try {
+        subscription.findAll({
+            attributes: ['StoreName'],
+            where: {
+                Customer: req.params.name
+            }
+        }).then(function(info){
+            return res.send(info)
+        })
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 exports.subscribe = subscribe;
 exports.shopData = shopData;
 exports.getData = getData;
+exports.getShops = getShops;

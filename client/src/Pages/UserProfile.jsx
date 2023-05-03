@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import UserDetailsTab from '../Components/UserDetailsTab'
+import Footer from '../Components/Footer'
 
 export const UserProfile = () => {
 
@@ -8,9 +9,10 @@ export const UserProfile = () => {
 
   return (
     <div className=''>
-        <div className='h-[650px] bg-gradient-to-b from-ouryellow '>
+        <div className='bg-gradient-to-b from-ouryellow '>
           <UserDetailsTab name={name} />
         </div>
+        <Footer />
     </div>
   )
 }

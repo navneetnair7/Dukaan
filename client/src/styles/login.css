@@ -70,17 +70,18 @@ body {
 
 .spline {
   background-color: rgb(247, 247, 247);
-  width: 47%;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  object-fit: fill;
 }
 
 .element {
   background-color: rgb(247, 247, 247);
-  width: 98%;
-  height: 98%;
+  width: 100%;
+  height: 100%;
 }
 
 .form {

@@ -3,7 +3,7 @@ import SellerLogin from './Pages/SellerLogin'
 import SellerSignup from './Pages/SellerSignup'
 import UserLogin from './Pages/UserLogin'
 import UserSignup from './Pages/UserSignup'
-// import Navbar from './Components/Navbar'
+import Navbar from './Components/Navbar'
 import Home from './Pages/Home'
 import SingleProductDetails from './Pages/SingleProductDetails'
 import Cart from './Pages/Cart'
@@ -11,7 +11,7 @@ import ProductGridView from './Pages/ProductGridView'
 import Maps from './Components/Maps'
 import UserProfile from './Pages/UserProfile'
 import { SellerProfilePage } from './Pages/SellerProfilePage'
-// import Footer from './Components/Footer'
+import Footer from './Components/Footer'
 
 function App() {
   return (

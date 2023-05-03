@@ -20,13 +20,6 @@ export const GridItem = () => {
     }])
 
     const AddtoCart = async (item) => {
-        // console.log(item.name);
-        // setProduct({
-        //     Name: item.name,
-        //     Price: item.price,
-        //     Quantity: 1
-        // })
-        // console.log(product);
         await axios.post('http://localhost:4000/cart/add', {
             customer: "Navneet",
             name: item.name,
@@ -38,12 +31,9 @@ export const GridItem = () => {
     const getProducts = () => {
         axios.get(`http://localhost:4000/category/${name}`)
             .then(res => {
-                // console.log(res.data);
                 let productsData = res.data;
                 let data = getProductsArray(productsData);
-                // console.log(data);
                 setItems(data);
-                // console.log(items);
             })
     }
 
@@ -62,8 +52,6 @@ export const GridItem = () => {
         }))
 
     useEffect(() => {
-        // console.log(name);
-        // console.log(product);
         getProducts();
     }, [product])
 
@@ -72,8 +60,8 @@ export const GridItem = () => {
             return(
                 <div className='flex flex-col w-1/4'>
                     <div className='flex justify-center p-6 border-2 border-gray-200 rounded-xl mt-8 w-11/12 h-80 flex-col hover:cursor-pointer' onClick={(e) => handleProduct(e, item.Name)}>
-                        <div className='h-72 w-72'>
-                            <img src={item.Image} className='rounded-xl' alt={item.Name}/>
+                        <div className='h-52 w-52 mx-auto'>
+                            <img src={item.Image} className='rounded-xl object-contain' alt={item.Name}/>
                         </div>
                         <div className=''>
                             <div className='text-center font-semibold text-xl text-gray-700' >{item.Name}</div>

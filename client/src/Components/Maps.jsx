@@ -99,7 +99,7 @@ function App() {
               <div id="map" style={{ height: "500px", width: "100%" }} className="rounded-xl fixed"></div>
             </div>
           </div>
-          <button className="border border-ouryellow rounded-lg w-1/5 h-10 ml-72 hover:bg-ouryellow hover:text-white" onClick={() => {navigate(`/profile/${name}`)}}>Done</button>
+          <button className="border border-ouryellow rounded-lg w-1/5 h-10 ml-72 hover:bg-ouryellow hover:text-white" onClick={() => {navigate(`/user/${name}`)}}>Done</button>
     </div>
   </div>
   );

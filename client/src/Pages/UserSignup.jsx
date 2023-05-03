@@ -95,7 +95,11 @@ const UserSignup = () => {
             required
           />
         </div>
-        <button onClick={handleSubmit} className='h-10 w-1/2 mx-auto rounded-lg border border-ouryellow'>Sign In</button>
+        <div className='flex justify-between'>
+        <button onClick={handleSubmit} className='h-10 w-1/2 mr-5 mx-auto rounded-lg border border-ouryellow'>Sign In</button>
+        <button onClick={(e) => {e.preventDefault() 
+        navigate('/userlogin')}} className='h-10 w-1/2 mx-auto rounded-lg border border-ouryellow'>Login</button>
+        </div>
       </form>
     </div>
   )

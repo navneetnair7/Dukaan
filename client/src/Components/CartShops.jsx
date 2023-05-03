@@ -4,8 +4,10 @@ import Spline from '@splinetool/react-spline'
 import Invoice from './Invoice';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, useMantineTheme } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
 const CartShops = () => {
+    const navigate = useNavigate()
     const [opened, { open, close }] = useDisclosure(false);
     const [shops, setShops] = useState([])
     const theme = useMantineTheme();
@@ -16,6 +18,11 @@ const CartShops = () => {
                 console.log(res.data);
                 setShops(res.data)
             })
+    }
+    
+    const placeOrder = async () => {
+        await axios.delete(`http://localhost:4000/cart/Navneet`)
+            .then(navigate('/user/Navneet'))
     }
 
     useEffect(() => {
@@ -40,7 +47,7 @@ const CartShops = () => {
                             <p className='text-xl'>{shop.Address}</p>
                         </div>
                         <div className='my-2 w-1/2 rounded-lg mx-auto'>
-                            <button className='border rounded-lg w-full border-black h-full hover:bg-yellow-600'>Select</button>
+                            <button className='border rounded-lg w-full border-black h-full hover:bg-yellow-600' onClick={placeOrder}>PlaceOrder</button>
                         </div>
                     </div>
                 )
@@ -52,7 +59,7 @@ const CartShops = () => {
         <Modal
             opened = {opened}
             onClose={close}
-            title='Test'
+            title='Invoice'
             centered
             overlayProps={{
           color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2],

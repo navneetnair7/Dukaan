@@ -2,9 +2,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/swiper-bundle.css'
-
 import { Navigation, Pagination } from 'swiper'
-
 import carlist from './carlist'
 import Carcard from './Carcard'
 
@@ -16,8 +14,8 @@ function Carousel () {
         nextEl: '.slider-button-next',
         prevEl: '.slider-button-prev'
       }}
-      slidesPerView={6}
-      spaceBetween={15}
+      slidesPerView={7}
+      spaceBetween={10}
       modules={[Navigation, Pagination]}
       // pagination={{ clickable: true }}
       className='mySwiper'
