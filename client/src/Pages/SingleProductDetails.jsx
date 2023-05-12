@@ -1,21 +1,14 @@
-import React from 'react'
-// import Footer from '../Components/Footer'
-// import ProductImage from '../Components/ProductImage'
-import ProductDetails from '../Components/ProductDetails'
-// import ImageCarousel from '../Components/ImageCarousel'
+import React from "react";
+import ProductDetails from "../Components/ProductDetails";
 
 const SingleProductDetails = () => {
-    return(
-        <div className='flex flex-col'>
-
-            {/* flex container*/}
-            <div className='flex h-9'>
-                {/* <ProductImage /> */}
-                <ProductDetails />
-            </div>
-            {/* <Footer /> */}
-        </div>
-    )
-}
+  return (
+    <div className="flex flex-col">
+      <div className="flex h-9">
+        <ProductDetails />
+      </div>
+    </div>
+  );
+};
 
 export default SingleProductDetails;

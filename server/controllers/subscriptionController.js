@@ -66,7 +66,8 @@ const getShops = async (req ,res) => {
             where: {
                 Customer: req.params.name
             }
-        }).then(function(info){
+        }).then(function (info) {
+            console.log(info);
             return res.send(info)
         })
     }

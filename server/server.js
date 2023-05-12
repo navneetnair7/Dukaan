@@ -7,7 +7,8 @@ const cartRouter = require('./routes/cartRoutes');
 const homeRouter = require('./routes/homeRoutes')
 const categoryRouter = require('./routes/categoryRoutes');
 const productRouter = require('./routes/productRoutes');
-const subscriptionRouter = require('./routes/subscriptionRoutes')
+const subscriptionRouter = require('./routes/subscriptionRoutes');
+const itemRouter = require('./routes/itemRoutes');
 // const cors = require('cors')
 
 //express
@@ -39,5 +40,6 @@ app.use('/', homeRouter)
 app.use('/category', categoryRouter )
 app.use('/product', productRouter)
 app.use('/subscribe', subscriptionRouter)
+app.use('/item', itemRouter)
 
 app.listen(4000)
