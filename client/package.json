@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@clerk/clerk-react": "^4.16.0",
+    "@clerk/clerk-sdk-node": "^4.9.0",
     "@coreui/react": "^4.7.0",
     "@emotion/react": "^11.10.6",
     "@headlessui/react": "^1.7.13",
@@ -19,6 +21,7 @@
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "swiper": "^9.2.4",

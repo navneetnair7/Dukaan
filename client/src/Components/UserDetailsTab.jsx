@@ -3,9 +3,11 @@ import { UserStores } from "./UserStores";
 import UserProfileCard from "./UserProfileCard";
 import UserOrders from "./UserOrders";
 import { UserSubsProducts } from "./UserSubsProducts";
+import { useUser } from "@clerk/clerk-react";
 
-export const UserDetailsTab = (props) => {
-  const name = props.name;
+export const UserDetailsTab = () => {
+  const { user } = useUser();
+  const name = user.firstName;
 
   return (
     <div>

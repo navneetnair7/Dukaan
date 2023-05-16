@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/clerk-react";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,7 +9,10 @@ function App() {
   const [circle, setCircle] = useState(null);
   const [filteredResults, setFilteredResults] = useState([]);
 
-  const { name } = useParams();
+  const { user } = useUser();
+  console.log(user);
+  const userName = user?.firstName;
+  console.log(userName);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,19 +24,21 @@ function App() {
   }, []);
 
   const handleSubscribe = (e, place) => {
-    axios.post(`http://localhost:4000/subscribe/${name}`, {
-      store: place.name,
-      address: place.address
-    })
-      .then(res => {
-          // console.log(res);
+    axios
+      .post(`http://localhost:4000/subscribe/${userName}`, {
+        store: place.name,
+        address: place.address,
       })
-  }
+      .then((res) => {});
+  };
 
   useEffect(() => {
     if (position) {
       const map = new window.google.maps.Map(document.getElementById("map"), {
-        center: { lat: position.coords.latitude, lng: position.coords.longitude },
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
         zoom: 15,
       });
 
@@ -46,15 +52,19 @@ function App() {
 
       service.nearbySearch(request, (results, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          const filteredResults = results.filter((place) => place.business_status === "OPERATIONAL");
+          const filteredResults = results.filter(
+            (place) => place.business_status === "OPERATIONAL"
+          );
           setFilteredResults(filteredResults);
-          setMarkers(filteredResults.map((place) => {
-            const marker = new window.google.maps.Marker({
-              position: place.geometry.location,
-              map,
-            });
-            return marker;
-          }));
+          setMarkers(
+            filteredResults.map((place) => {
+              const marker = new window.google.maps.Marker({
+                position: place.geometry.location,
+                map,
+              });
+              return marker;
+            })
+          );
         }
       });
 
@@ -65,43 +75,74 @@ function App() {
         fillColor: "#FF0000",
         fillOpacity: 0.35,
         map: map,
-        center: { lat: position.coords.latitude, lng: position.coords.longitude },
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
         radius: 500,
       };
 
       const circle = new window.google.maps.Circle(circleOptions);
       setCircle(circle);
-    
     }
   }, [position]);
 
   return (
     <div className="bg-slate-100 h-screen">
-        <p className="text-4xl m-5">Available Shops based in your location</p>
-        <div>
-          <div className="flex m-5 h-full">
-            <div className="w-1/2">
+      <p className="text-4xl m-5">Available Shops based in your location</p>
+      <div>
+        <div className="flex m-5 h-full">
+          <div className="w-1/2">
             {filteredResults.length > 0 && (
               <div className="flex flex-wrap justify-center">
-                  {filteredResults.map((place) => (
-                  <div key={place.id} className="flex flex-col justify-center border rounded-xl shadow-md p-5 w-2/3 h-1/5 m-5 text-center text-lg bg-yellow-50">
-                      <h3><b>Store Name:</b> {place.name}</h3>
-                      <p><b>Address: </b>{place.vicinity}</p>
-                      <div>
-                      <button className="border rounded-xl bg-ouryellow hover:bg-yellow-700 hover:text-white border-black w-3/5 h-10 mt-5" onClick={(e) => handleSubscribe(e, {name: place.name, address: place.vicinity})}>Subscribe</button>
-                      </div>
+                {filteredResults.map((place) => (
+                  <div
+                    key={place.id}
+                    className="flex flex-col justify-center border rounded-xl shadow-md p-5 w-2/3 h-1/5 m-5 text-center text-lg bg-yellow-50"
+                  >
+                    <h3>
+                      <b>Store Name:</b> {place.name}
+                    </h3>
+                    <p>
+                      <b>Address: </b>
+                      {place.vicinity}
+                    </p>
+                    <div>
+                      <button
+                        className="border rounded-xl bg-ouryellow hover:bg-yellow-700 hover:text-white border-black w-3/5 h-10 mt-5"
+                        onClick={(e) =>
+                          handleSubscribe(e, {
+                            name: place.name,
+                            address: place.vicinity,
+                          })
+                        }
+                      >
+                        Subscribe
+                      </button>
+                    </div>
                   </div>
-                  ))}
+                ))}
               </div>
             )}
-            </div>
-            <div className="w-1/2 flex flex-col">
-              <div id="map" style={{ height: "500px", width: "100%" }} className="rounded-xl"></div>
-            </div>
           </div>
-          <button className="border border-ouryellow rounded-lg w-1/5 h-10 ml-72 hover:bg-ouryellow hover:text-white" onClick={() => {navigate(`/user/${name}`)}}>Done</button>
+          <div className="w-1/2 flex flex-col">
+            <div
+              id="map"
+              style={{ height: "500px", width: "100%" }}
+              className="rounded-xl"
+            ></div>
+          </div>
+        </div>
+        <button
+          className="border border-ouryellow rounded-lg w-1/5 h-10 ml-72 hover:bg-ouryellow hover:text-white"
+          onClick={() => {
+            navigate(`/user`);
+          }}
+        >
+          Done
+        </button>
+      </div>
     </div>
-  </div>
   );
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import UserDetailsTab from '../Components/UserDetailsTab'
 import Footer from '../Components/Footer'
+import Navbar from '../Components/Navbar'
 
 export const UserProfile = () => {
 
@@ -9,6 +10,7 @@ export const UserProfile = () => {
 
   return (
     <div className=''>
+      <Navbar />
         <div className='bg-gradient-to-b from-ouryellow '>
           <UserDetailsTab name={name} />
         </div>
