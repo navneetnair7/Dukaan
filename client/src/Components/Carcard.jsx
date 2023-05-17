@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useUser, isSignedIn } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import { toast } from "react-hot-toast";
 
 function Carcard(props) {
@@ -13,6 +13,7 @@ function Carcard(props) {
         price: item.price,
         quantity: 1,
       });
+      toast.success("Added to your Cart");
     } else {
       toast.error("Please Sign In");
     }

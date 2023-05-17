@@ -5,10 +5,15 @@ import { useNavigate } from "react-router-dom";
 function Navbar() {
   const { user, isSignedIn } = useUser();
   const { signOut } = useClerk();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="nav">
-      <div className="logo">
+      <div
+        className="logo hover:cursor-pointer"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <span style={{ color: "white" }}>DU</span>KAAN
       </div>
       <div className="search">
@@ -17,18 +22,20 @@ function Navbar() {
       </div>
       {isSignedIn && (
         <div className="flex w-96">
-          <button className="cart" onClick={() => navigate("/cart")}>
+          <button className="cart p-2" onClick={() => navigate("/cart")}>
             <img src="/images/cart.jpeg"></img>
             Cart
           </button>
-          <button className="cart" onClick={() => navigate("/user")}>
+          <button className="cart p-2" onClick={() => navigate("/user")}>
             <img src="/images/profile.png"></img>
-            My Profile
+            Profile
           </button>
           <button
-            className="profile"
+            className="profile p-2 w-auto"
             onClick={() => {
               signOut();
+              localStorage.setItem("visited", "false");
+              navigate("/");
             }}
           >
             <img src="/images/profile.png"></img>

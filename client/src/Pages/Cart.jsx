@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import CartShops from "../Components/CartShops";
 import Spline from "@splinetool/react-spline";
-import { useDisclosure } from "@mantine/hooks";
-// import { Modal, Button, Group } from '@mantine/core';
+import { useUser } from "@clerk/clerk-react";
+import Navbar from "../Components/Navbar";
 
 const Cart = () => {
-  const [opened, { open, close }] = useDisclosure(false);
-
-  const navigate = useNavigate();
+  const { user } = useUser();
+  const name = user.firstName;
   const initialCart = [
     {
       ItemName: "",
@@ -20,7 +18,7 @@ const Cart = () => {
   const [products, setProducts] = useState(initialCart);
 
   const getCartData = () => {
-    axios.get(`http://localhost:4000/cart/Navneet`).then((res) => {
+    axios.get(`http://localhost:4000/cart/${name}`).then((res) => {
       let itemData = res.data;
       let data = getItemArray(itemData);
       console.log(data.map((row) => row.ItemName));
@@ -41,6 +39,7 @@ const Cart = () => {
 
   return (
     <div className="">
+      <Navbar />
       <div className="flex">
         <p className="text-8xl ml-10 w-1/2 p-10">Your Cart</p>
         <Spline scene="https://prod.spline.design/lfnkExhoqVfsh8q0/scene.splinecode" />

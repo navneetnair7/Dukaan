@@ -35,17 +35,16 @@ function Home() {
   const { isSignedIn, user, createdAt, lastSignInAt } = useUser();
   const { signOut } = useClerk();
   if (isSignedIn) {
+    console.log(visited);
+    console.log(user);
+    console.log(user.createdAt);
+    console.log(user.lastSignInAt);
     if (createdAt == lastSignInAt) {
+      console.log("test");
       if (!visited) {
         console.log("New User", user);
-        // navigate("/maps");
         localStorage.setItem("visited", "true");
-      }
-    } else {
-      if (!visited) {
-        console.log("Old User");
-        // navigate("/user");
-        localStorage.setItem("visited", "true");
+        navigate("/maps");
       }
     }
     console.log(user.firstName);
@@ -63,19 +62,20 @@ function Home() {
             <input className="search-bar pl-5" placeholder="Search"></input>
           </div>
           {isSignedIn && (
-            <div className="flex w-96"> 
-              <button className="cart" onClick={() => navigate("/cart")}>
+            <div className="flex w-96">
+              <button className="cart p-2 w-auto" onClick={() => navigate("/cart")}>
                 <img src="/images/cart.jpeg"></img>
                 Cart
               </button>
-              <button className="cart" onClick={() => navigate("/user")}>
+              <button className="cart p-2 w-auto" onClick={() => navigate("/user")}>
                 <img src="/images/profile.png"></img>
-                My Profile
+                Profile
               </button>
               <button
-                className="profile"
+                className="profile p-2 w-auto"
                 onClick={() => {
                   signOut();
+                  localStorage.setItem("visited", "false");
                 }}
               >
                 <img src="/images/profile.png"></img>

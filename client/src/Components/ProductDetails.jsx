@@ -4,12 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import AddQuantity from "./AddQuantity";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useUser } from "@clerk/clerk-react";
 
 const ProductDetails = () => {
   const { name } = useParams();
   const navigate = useNavigate();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
+  const { user } = useUser();
+  const username = user.firstName;
 
   const [subscriptionType, setSubscriptionType] = useState("");
   const [store, setStore] = useState("");
@@ -28,12 +31,12 @@ const ProductDetails = () => {
     // Handle form submission logic here
     console.log("Subscription:", subscriptionType);
     console.log("Store:", store);
-    await axios.post('http://localhost:4000/item/subscribe/Navneet', {
+    await axios.post(`http://localhost:4000/item/subscribe/${username}`, {
       itemname: product.Name,
       subscription: subscriptionType,
       store: store,
-      image: product.Image
-    })
+      image: product.Image,
+    });
   };
 
   const [product, setProduct] = useState({
@@ -66,10 +69,12 @@ const ProductDetails = () => {
   };
 
   const getSubscibedStores = () => {
-    axios.get("http://localhost:4000/subscribe/user/Navneet").then((res) => {
-      console.log(res.data);
-      setStores(res.data);
-    });
+    axios
+      .get(`http://localhost:4000/subscribe/user/${username}`)
+      .then((res) => {
+        console.log(res.data);
+        setStores(res.data);
+      });
   };
 
   useEffect(() => {
