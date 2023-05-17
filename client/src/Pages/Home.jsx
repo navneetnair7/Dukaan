@@ -119,7 +119,7 @@ function Home() {
           </div>
           <div className="driver">
             <div className="d-content">
-              <span id="title">' Verified Stores '</span>
+              <span id="title">'Verified Stores'</span>
               <br></br>
               <div className="verified">
                 {" "}

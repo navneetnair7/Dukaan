@@ -19,7 +19,7 @@ function UserLogin() {
         </div>
 
         <div className="spline">
-          <div className="element">
+          <div className="element w-auto h-auto">
             <Spline scene="https://prod.spline.design/1nF5f2A-9UPkKi6s/scene.splinecode" />
           </div>
         </div>
@@ -28,15 +28,26 @@ function UserLogin() {
             <div className="inp">
               <div className="log-title">Login</div>
               <div id="inp-text">Username</div>
-              <input type="text" placeholder="Name"></input>
+              <input
+                type="text"
+                placeholder="Name"
+                disabled
+                className="hover:cursor-not-allowed"
+              ></input>
               <div id="inp-text">Password</div>
-              <input type="password" required></input>
+              <input
+                type="password"
+                disabled
+                className="hover:cursor-not-allowed"
+              ></input>
               <div id="inp-text">E-mail</div>
               <input
                 type="email"
                 placeholder="E-mail"
                 id="email"
                 name="email"
+                disabled
+                className="hover:cursor-not-allowed"
               ></input>
               <div>
                 {/* <SignInButton /> */}
