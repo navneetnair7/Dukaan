@@ -6,6 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import { toast } from "react-hot-toast";
 
 const CartShops = () => {
   const navigate = useNavigate();
@@ -15,6 +16,11 @@ const CartShops = () => {
   const { user } = useUser();
   const name = user.firstName;
 
+  const placed = () => {
+    toast.success("Order Placed", { className: "w-52 h-20 mb-20" });
+    navigate("/user");
+  };
+
   const getShopData = () => {
     axios.get(`http://localhost:4000/subscribe/cart/${name}`).then((res) => {
       console.log(res.data);
@@ -23,9 +29,7 @@ const CartShops = () => {
   };
 
   const placeOrder = async () => {
-    await axios
-      .delete(`http://localhost:4000/cart/${name}`)
-      .then(navigate("/user"));
+    await axios.delete(`http://localhost:4000/cart/${name}`).then(placed());
   };
 
   useEffect(() => {

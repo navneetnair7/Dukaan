@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import SellerLogin from "./Pages/SellerLogin";
 import SellerSignup from "./Pages/SellerSignup";
 import UserLogin from "./Pages/UserLogin";
-import UserSignup from "./Pages/UserSignup";
 import Home from "./Pages/Home";
 import SingleProductDetails from "./Pages/SingleProductDetails";
 import Cart from "./Pages/Cart";
@@ -29,7 +28,6 @@ function App() {
           <Route path="/" element=<Home /> exact />
           <Route path="/userlogin" element=<UserLogin /> exact />
           <Route path="/product/:name" element=<SingleProductDetails /> exact />
-          <Route path="/usersignup" element=<UserSignup /> exact />
           <Route path="/sellerlogin" element=<SellerLogin /> exact />
           <Route path="/sellersignup" element=<SellerSignup /> exact />
           <Route path="/cart" element=<Cart /> exact />
